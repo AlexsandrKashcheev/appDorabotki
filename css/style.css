@@ -84,14 +84,14 @@ body{
 }
 
 .title {
-    font-size: 42px;
+    font-size: 46px;
     font-weight: 700;
     margin-bottom: 30px;
     color: rgb(244, 227, 204);
 }
 
 .user-name {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 24px;
     color: rgb(244, 227, 204);
 }
@@ -138,6 +138,13 @@ body{
     background-color: rgb(29, 139, 82);
 }
 
+.table {
+    width: 100%;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    display: none;
+}
+
 .table-button{
     width: 100%;
     height: 100%;
@@ -148,12 +155,12 @@ body{
 
 .btn-look {
     width: 50%;
-    background-color: rgb(109, 169, 6);
+    background-color: rgb(6, 169, 139);
     transition: ease all .2s;
 }
 
 .btn-look:hover, .btn-look:active, .btn-look:focus {
-    background-color: rgb(91, 134, 15);
+    background-color: rgb(19, 121, 92);
 }
 
 .btn-clear {

@@ -3,6 +3,7 @@ const select = document.getElementById('select');
 const inputKnot = document.getElementById('knot');
 const inputCount = document.getElementById('count');
 const btn = document.getElementById('btn');
+const table = document.getElementById('tbl');
 
 function onChange() {
     let val = select.value;
@@ -58,6 +59,7 @@ const lookBtn = document.getElementById('lookBtn');
 const elemButtons = document.querySelector('.table-button');
 
 lookBtn.onclick = () => {
+    table.style.display = 'block';
 
     const res = JSON.parse(localStorage.getItem('data'));
     lookBtn.disabled = true;
@@ -66,21 +68,25 @@ lookBtn.onclick = () => {
         console.log(res);
         let id = 0;
         for (let i = 0; i <= res.length; i++) {
-            const ElemTable = document.createElement('div');
-            ElemTable.style.marginBottom = '20px';
-            ElemTable.innerHTML = `<p>${id+=1}) Двигатель: ${res[i].engine}; Узел доработки: ${res[i].knot}; Кол-во: ${res[i].count}.</p>`;
-            elemButtons.before(ElemTable);
+            const elemTable = document.createElement('div');
+            elemTable.style.marginBottom = '20px';
+            elemTable.innerHTML = `<p>${id+=1}) Двигатель: ${res[i].engine}; Узел доработки: ${res[i].knot}; Кол-во: ${res[i].count}.</p>`;
+            elemButtons.before(elemTable);
         }
 
     }else{
         const elemMessage = document.createElement('div');
-        elemMessage.innerHTML = 'Таблица пока пустая!'; // добавить отступ снизу
+        elemMessage.innerHTML = 'Таблица пока пустая!';
         elemMessage.style.marginBottom = '20px';
         elemButtons.before(elemMessage);
     }
+  
+}
 
-    
-    
+const clearBtn = document.getElementById('clearBtn');
+
+clearBtn.onclick = () => {
+    localStorage.clear();
 }
 
 
