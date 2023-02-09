@@ -20,13 +20,22 @@ userName.classList.add('user-name');
 title.after(userName);
 
 
-const data = [];
+let data = [];
 
 let id = 0;
 
 btn.onclick = () => {
-    
+    data = JSON.parse(localStorage.getItem('data'));
+
+    if(data === null){
+        data = [];
+    }
+
     while(true) {
+        id = localStorage.getItem('key');
+        if(id === null){
+            id = 0;
+        }
         let obj = {};
         obj.engine = onChange();
         obj.knot = inputKnot.value;
@@ -36,6 +45,8 @@ btn.onclick = () => {
 
         localStorage.setItem('data', JSON.stringify(data));
         id++;
+        localStorage.setItem('key', id);
+
         break;
     }
 
@@ -49,7 +60,7 @@ const elemButtons = document.querySelector('.table-button');
 lookBtn.onclick = () => {
 
     const res = JSON.parse(localStorage.getItem('data'));
-
+    lookBtn.disabled = true;
     if(res !== null){
         
         console.log(res);
@@ -63,9 +74,13 @@ lookBtn.onclick = () => {
 
     }else{
         const elemMessage = document.createElement('div');
-        elemMessage.innerHTML = 'Таблица пока пустая!';
+        elemMessage.innerHTML = 'Таблица пока пустая!'; // добавить отступ снизу
+        elemMessage.style.marginBottom = '20px';
         elemButtons.before(elemMessage);
     }
+
+    
     
 }
+
 
