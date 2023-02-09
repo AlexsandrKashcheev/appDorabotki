@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');*/
+
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 
 
 html, body, div, span, applet, object, iframe,
@@ -59,7 +62,7 @@ html {
 }
 
 body{
-    font-family: 'Itim', cursive;
+    font-family: 'Pangolin', cursive;
     font-size: 18px;
     background-color: rgb(195, 131, 86);
 }
@@ -80,7 +83,8 @@ body{
 }
 
 .title {
-    font-size: 36px;
+    font-size: 42px;
+    font-weight: 700;
     margin-bottom: 30px;
     color: rgb(244, 227, 204);
 }
@@ -99,7 +103,7 @@ body{
 }
 
 .inp {
-    font-family: 'Itim', cursive;
+    font-family: 'Pangolin', cursive;
     font-size: 18px;
     padding: 10px;
     border: 0;
@@ -116,7 +120,7 @@ body{
 
 
 .button {
-    font-family: 'Itim', cursive;
+    font-family: 'Pangolin', cursive;
     font-size: 18px;
     padding: 15px;
     color: #fff;
