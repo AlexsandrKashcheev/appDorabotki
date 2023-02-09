@@ -39,8 +39,33 @@ btn.onclick = () => {
         break;
     }
 
+    
+}
+
+
+const lookBtn = document.getElementById('lookBtn');
+const elemButtons = document.querySelector('.table-button');
+
+lookBtn.onclick = () => {
+
     const res = JSON.parse(localStorage.getItem('data'));
-    console.log(res);
+
+    if(res !== null){
+        
+        console.log(res);
+        let id = 0;
+        for (let i = 0; i <= res.length; i++) {
+            const ElemTable = document.createElement('div');
+            ElemTable.style.marginBottom = '20px';
+            ElemTable.innerHTML = `<p>${id+=1}) Двигатель: ${res[i].engine}; Узел доработки: ${res[i].knot}; Кол-во: ${res[i].count}.</p>`;
+            elemButtons.before(ElemTable);
+        }
+
+    }else{
+        const elemMessage = document.createElement('div');
+        elemMessage.innerHTML = 'Таблица пока пустая!';
+        elemButtons.before(elemMessage);
+    }
     
 }
 
