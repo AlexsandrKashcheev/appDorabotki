@@ -25,7 +25,7 @@ let id = 0;
 
 btn.onclick = () => {
     data = JSON.parse(localStorage.getItem('data'));
-
+    
     if(data === null){
         data = [];
     }
@@ -38,6 +38,15 @@ btn.onclick = () => {
         obj.engine = onChange();
         obj.knot = inputKnot.value;
         obj.count = inputCount.value;
+
+        for(let i = 0; i < data.length; i++){
+            if(data[i].engine === obj.engine && data[i].knot === obj.knot) {
+                obj.count = Number(obj.count) + Number(data[i].count);
+                data.splice(i, 1);
+                id -= 1;
+            }
+        }
+
         console.log(obj);
         data[id] = obj;
 
@@ -86,7 +95,7 @@ lookBtn.onclick = () => {
     if(res !== null){
         console.log(res);
         let id = 0;
-        for (let i = 0; i <= res.length; i++) {
+        for (let i = 0; i < res.length; i++) {
             const row_2 = document.createElement('tr');
             const bodyEngine = document.createElement('td');
             bodyEngine.innerHTML = `${res[i].engine}`;
