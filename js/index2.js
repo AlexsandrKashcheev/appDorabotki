@@ -125,8 +125,16 @@ lookBtn.onclick = () => {
 const clearBtn = document.getElementById('clearBtn');
 
 clearBtn.onclick = () => {
-    localStorage.clear();
-    table.remove();
+
+    if(confirm('Вы действительно хотите очистить таблицу?')){
+        localStorage.clear();
+        table.remove();
+        alert('Таблица успешно очищена!');
+    } else {
+        alert('Фуух, данные спасены...');
+    }
+
+    
 }
 
 
