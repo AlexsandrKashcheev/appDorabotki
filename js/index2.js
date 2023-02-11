@@ -3,7 +3,6 @@ const select = document.getElementById('select');
 const inputKnot = document.getElementById('knot');
 const inputCount = document.getElementById('count');
 const btn = document.getElementById('btn');
-const table = document.getElementById('tbl');
 
 function onChange() {
     let val = select.value;
@@ -54,24 +53,64 @@ btn.onclick = () => {
     
 }
 
-
+const table = document.createElement('table');
 const lookBtn = document.getElementById('lookBtn');
 const elemButtons = document.querySelector('.table-button');
 
 lookBtn.onclick = () => {
-    table.style.display = 'block';
+    //table.style.display = 'block';
 
     const res = JSON.parse(localStorage.getItem('data'));
     lookBtn.disabled = true;
+    
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    table.classList.add('table');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    elemButtons.before(table);
+    const row_1 = document.createElement('tr');
+    const headerEngine = document.createElement('th');
+    headerEngine.innerHTML = 'Двигатель';
+
+    const headerKnot = document.createElement('th');
+    headerKnot.innerHTML = 'Узел доработки';
+
+    const headerCount = document.createElement('th');
+    headerCount.innerHTML = 'Кол-во';
+
+    row_1.appendChild(headerEngine);
+    row_1.appendChild(headerKnot);
+    row_1.appendChild(headerCount);
+
+    table.appendChild(row_1);
+    
+
     if(res !== null){
         
         console.log(res);
         let id = 0;
         for (let i = 0; i <= res.length; i++) {
-            const elemTable = document.createElement('div');
-            elemTable.style.marginBottom = '20px';
-            elemTable.innerHTML = `<p>${id+=1}) Двигатель: ${res[i].engine}; Узел доработки: ${res[i].knot}; Кол-во: ${res[i].count}.</p>`;
-            elemButtons.before(elemTable);
+
+            const row_2 = document.createElement('tr');
+            const bodyEngine = document.createElement('td');
+            bodyEngine.innerHTML = `${res[i].engine}`;
+
+            const bodyKnot = document.createElement('td');
+            bodyKnot.innerHTML = `${res[i].knot}`;
+
+            const bodyCount = document.createElement('td');
+            bodyCount.innerHTML = `${res[i].count}`;
+
+            row_2.appendChild(bodyEngine);
+            row_2.appendChild(bodyKnot);
+            row_2.appendChild(bodyCount);
+
+            table.appendChild(row_2);
+            
         }
 
     }else{
@@ -87,6 +126,7 @@ const clearBtn = document.getElementById('clearBtn');
 
 clearBtn.onclick = () => {
     localStorage.clear();
+    table.remove();
 }
 
 

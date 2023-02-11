@@ -140,9 +140,15 @@ body{
 
 .table {
     width: 100%;
-    border: 1px solid #000;
+    background-color: rgb(255, 221, 180);
     margin-bottom: 20px;
-    display: none;
+    color: #000;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 10px;  
 }
 
 .table-button{
