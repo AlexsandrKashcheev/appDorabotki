@@ -19,7 +19,6 @@ userName.innerHTML = `Здравствуйте, ${user.name} ${user.surname}`;
 userName.classList.add('user-name');
 title.after(userName);
 
-
 let data = [];
 
 let id = 0;
@@ -30,7 +29,6 @@ btn.onclick = () => {
     if(data === null){
         data = [];
     }
-
     while(true) {
         id = localStorage.getItem('key');
         if(id === null){
@@ -46,11 +44,9 @@ btn.onclick = () => {
         localStorage.setItem('data', JSON.stringify(data));
         id++;
         localStorage.setItem('key', id);
-
         break;
     }
 
-    
 }
 
 const table = document.createElement('table');
@@ -58,7 +54,6 @@ const lookBtn = document.getElementById('lookBtn');
 const elemButtons = document.querySelector('.table-button');
 
 lookBtn.onclick = () => {
-    //table.style.display = 'block';
 
     const res = JSON.parse(localStorage.getItem('data'));
     lookBtn.disabled = true;
@@ -88,13 +83,10 @@ lookBtn.onclick = () => {
 
     table.appendChild(row_1);
     
-
     if(res !== null){
-        
         console.log(res);
         let id = 0;
         for (let i = 0; i <= res.length; i++) {
-
             const row_2 = document.createElement('tr');
             const bodyEngine = document.createElement('td');
             bodyEngine.innerHTML = `${res[i].engine}`;
@@ -109,21 +101,17 @@ lookBtn.onclick = () => {
             row_2.appendChild(bodyKnot);
             row_2.appendChild(bodyCount);
 
-            table.appendChild(row_2);
-            
+            table.appendChild(row_2);  
         }
-
     }else{
         const elemMessage = document.createElement('div');
         elemMessage.innerHTML = 'Таблица пока пустая!';
         elemMessage.style.marginBottom = '20px';
         elemButtons.before(elemMessage);
     }
-  
 }
 
 const clearBtn = document.getElementById('clearBtn');
-
 clearBtn.onclick = () => {
 
     if(confirm('Вы действительно хотите очистить таблицу?')){
@@ -134,7 +122,6 @@ clearBtn.onclick = () => {
         alert('Фуух, данные спасены...');
     }
 
-    
 }
 
 
