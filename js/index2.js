@@ -55,6 +55,8 @@ btn.onclick = () => {
         localStorage.setItem('key', id);
         break;
     }
+    inputKnot.value = '';
+    inputCount.value = '';
 
 }
 
