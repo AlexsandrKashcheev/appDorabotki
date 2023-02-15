@@ -120,9 +120,9 @@ lookBtn.onclick = () => {
 
                 delBtn.onclick = () => {
                     let key = localStorage.getItem('key');
-                    let resChange = res.splice(i, 1);
+                    res.splice(i, 1);
                     let id = Number(key - 1);
-                    localStorage.setItem('data', JSON.stringify(resChange));
+                    localStorage.setItem('data', JSON.stringify(res));
                     localStorage.setItem('key', id);
                     row_2.remove();
                 }
