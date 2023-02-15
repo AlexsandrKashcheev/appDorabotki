@@ -146,6 +146,14 @@ body{
     border-collapse: collapse;
 }
 
+.row{
+    transition: all ease .2s;
+}
+
+.row:hover, .row:active, .row:focus {
+    background-color: rgb(195, 179, 160);
+}
+
 th, td {
     border: 1px solid #000;
     padding: 10px;  
@@ -181,4 +189,14 @@ th{
 
 .btn-clear:hover, .btn-clear:active, .btn-clear:focus {
     background-color: rgb(145, 33, 13);
+}
+
+.btn-delete {
+    background-color: rgb(147, 70, 56);
+    transition: all ease .2s;
+    display: none;
+}
+
+.btn-delete:hover {
+    background-color: rgb(104, 59, 51);
 }

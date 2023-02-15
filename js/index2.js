@@ -6,7 +6,6 @@ const btn = document.getElementById('btn');
 
 function onChange() {
     let val = select.value;
-    console.log(val);
     return val;
 }
 select.onchange = onChange;
@@ -36,7 +35,7 @@ btn.onclick = () => {
         }
         let obj = {};
         obj.engine = onChange();
-        obj.knot = inputKnot.value;
+        obj.knot = inputKnot.value.toLowerCase();
         obj.count = inputCount.value;
 
         for(let i = 0; i < data.length; i++){
@@ -99,6 +98,7 @@ lookBtn.onclick = () => {
         let id = 0;
         for (let i = 0; i < res.length; i++) {
             const row_2 = document.createElement('tr');
+            row_2.classList.add('row');
             const bodyEngine = document.createElement('td');
             bodyEngine.innerHTML = `${res[i].engine}`;
 
@@ -112,7 +112,23 @@ lookBtn.onclick = () => {
             row_2.appendChild(bodyKnot);
             row_2.appendChild(bodyCount);
 
-            table.appendChild(row_2);  
+            table.appendChild(row_2);
+
+            row_2.addEventListener('click', () => {
+                const delBtn = document.getElementById('delBtn');
+                delBtn.style.display = 'block';
+
+                delBtn.onclick = () => {
+                    let key = localStorage.getItem('key');
+                    let resChange = res.splice(i, 1);
+                    let id = Number(key - 1);
+                    localStorage.setItem('data', JSON.stringify(resChange));
+                    localStorage.setItem('key', id);
+                    row_2.remove();
+                }
+                
+                
+            });  
         }
     }else{
         const elemMessage = document.createElement('div');
