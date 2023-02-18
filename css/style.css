@@ -200,3 +200,14 @@ th{
 .btn-delete:hover {
     background-color: rgb(104, 59, 51);
 }
+
+.input-node {
+    font-family: 'Pangolin', cursive;
+    font-size: 18px;
+    border: 0;
+    background: 0;
+}
+
+.input-node:focus, .input-node:active {
+    outline: none;
+}

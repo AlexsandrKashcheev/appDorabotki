@@ -114,6 +114,7 @@ lookBtn.onclick = () => {
 
             table.appendChild(row_2);
 
+
             row_2.addEventListener('click', () => {
                 const delBtn = document.getElementById('delBtn');
                 delBtn.style.display = 'block';
@@ -127,8 +128,8 @@ lookBtn.onclick = () => {
                     row_2.remove();
                 }
                 
-                
-            });  
+            });
+            
         }
     }else{
         const elemMessage = document.createElement('div');
@@ -136,7 +137,50 @@ lookBtn.onclick = () => {
         elemMessage.style.marginBottom = '20px';
         elemButtons.before(elemMessage);
     }
+
+    const nodeListTr = document.querySelectorAll('tr.row');
+    console.log(nodeListTr);
+    const arrTr = Array.from(nodeListTr);
+    console.log(arrTr);
+    let id = 0;
+    for(let i = 0; i < arrTr.length; i++){
+        const elems = arrTr[i].childNodes;
+        const arrTd = Array.from(elems);
+        console.log(arrTd);
+        for(let e = 0; e < arrTd.length; e++){
+            const input = document.createElement('input');
+            arrTd[e].addEventListener('dblclick', () => {
+                console.log(arrTd[e].innerText);
+                
+                input.classList.add('input-node');
+                input.value = arrTd[e].innerText;
+                arrTd[e].innerText = '';
+                arrTd[e].appendChild(input);
+            });
+
+            input.addEventListener('blur', () => {
+                let obj = {};
+                arrTd[e].innerText = input.value;
+                input.remove();
+                console.log(arrTd[e].innerText);
+                obj.engine = arrTd[0].innerText;
+                obj.knot = arrTd[1].innerText;
+                obj.count = arrTd[2].innerText;
+                console.log(obj);
+                const resChange = JSON.parse(localStorage.getItem('data'));
+                console.log(resChange);
+                resChange.splice(i, 1, obj);
+                console.log(resChange);
+                localStorage.setItem('data', JSON.stringify(resChange));
+    
+            });
+        }
+    }
+    
+    
 }
+
+
 
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = () => {
