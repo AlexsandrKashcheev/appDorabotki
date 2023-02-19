@@ -11,7 +11,7 @@ function onChange() {
 select.onchange = onChange;
 onChange();
 
-const user = JSON.parse(document.cookie);
+const user = JSON.parse(localStorage.getItem('userName'));
 console.log(user);
 const userName = document.createElement('div');
 userName.innerHTML = `Здравствуйте, ${user.name} ${user.surname}`;

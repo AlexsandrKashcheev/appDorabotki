@@ -1,6 +1,7 @@
 
 //Проверить запись в cookie
-if(document.cookie != '') {
+const userName = JSON.parse(localStorage.getItem('userName'));
+if(userName != null) {
     window.location.href = './index2.html'; //если запись есть, войти под именем в записи
 }
 
@@ -10,7 +11,7 @@ window.onload = function() {
     const inputLastName = document.getElementById('lastName');
     const btn = document.getElementById('btn');
 
-    console.log(document.cookie);
+    console.log(userName);
 
     function valid() {
         let firstName = inputFirstName.value;
@@ -20,8 +21,8 @@ window.onload = function() {
             surname: lastName
         };
 
-        if (document.cookie != firstName) {
-            document.cookie = JSON.stringify(user);
+        if (localStorage.getItem('userName') != firstName) {
+            localStorage.setItem('userName', JSON.stringify(user));
             window.location.href = './index2.html';
         } else {
             window.location.href = './index2.html';
