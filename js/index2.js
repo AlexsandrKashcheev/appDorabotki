@@ -33,10 +33,12 @@ btn.onclick = () => {
         if(id === null){
             id = 0;
         }
+        const datte = new Date();
         let obj = {};
         obj.engine = onChange();
         obj.knot = inputKnot.value.toLowerCase();
         obj.count = inputCount.value;
+        obj.date = datte.toLocaleDateString();
 
         for(let i = 0; i < data.length; i++){
             if(data[i].engine === obj.engine && data[i].knot === obj.knot) {
@@ -56,6 +58,8 @@ btn.onclick = () => {
     }
     inputKnot.value = '';
     inputCount.value = '';
+
+    window.location.reload();
 
 }
 
@@ -93,6 +97,7 @@ lookBtn.onclick = () => {
 
     table.appendChild(row_1);
     
+    
     if(res !== null){
         console.log(res);
         let id = 0;
@@ -108,9 +113,11 @@ lookBtn.onclick = () => {
             const bodyCount = document.createElement('td');
             bodyCount.innerHTML = `${res[i].count}`;
 
+
             row_2.appendChild(bodyEngine);
             row_2.appendChild(bodyKnot);
             row_2.appendChild(bodyCount);
+
 
             table.appendChild(row_2);
 
@@ -186,7 +193,8 @@ const clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = () => {
 
     if(confirm('Вы действительно хотите очистить таблицу?')){
-        localStorage.clear();
+        localStorage.removeItem('data');
+        localStorage.removeItem('key');
         table.remove();
         alert('Таблица успешно очищена!');
     } else {
