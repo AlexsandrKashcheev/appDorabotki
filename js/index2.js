@@ -4,6 +4,10 @@ const inputKnot = document.getElementById('knot');
 const inputCount = document.getElementById('count');
 const btn = document.getElementById('btn');
 
+const sendRequest = (url, data) => {
+    //fetch запрос методом post
+}
+
 function onChange() {
     let val = select.value;
     return val;
@@ -54,12 +58,15 @@ btn.onclick = () => {
         localStorage.setItem('data', JSON.stringify(data));
         id++;
         localStorage.setItem('key', id);
+
+        sendRequest('./main.php', obj); //отправка данных на сервер
         break;
     }
     inputKnot.value = '';
     inputCount.value = '';
 
     window.location.reload();
+    
 
 }
 
@@ -179,6 +186,8 @@ lookBtn.onclick = () => {
                 resChange.splice(i, 1, obj);
                 console.log(resChange);
                 localStorage.setItem('data', JSON.stringify(resChange));
+
+                sendRequest('./main.php', resChange); //сделать функционал для отправки изменений на серевер 
     
             });
         }
@@ -196,6 +205,7 @@ clearBtn.onclick = () => {
         localStorage.removeItem('data');
         localStorage.removeItem('key');
         table.remove();
+        window.location.reload();
         alert('Таблица успешно очищена!');
     } else {
         alert('Фуух, данные спасены...');
