@@ -155,8 +155,9 @@ body{
 }
 
 th, td {
+    font-size: 16px;
     border: 1px solid #000;
-    padding: 10px;  
+    padding: 5px;  
 }
 
 th{
@@ -215,6 +216,14 @@ th{
     outline: none;
 }
 
+
+@media(max-width: 391px) {
+    th, td {
+        font-size: 14px;
+        padding: 3px;  
+    }
+}
+
 @media(max-width: 289px) {
     .title{
         font-size: 36px;
@@ -223,5 +232,10 @@ th{
 
     .wrapper {
         padding: 0px 8px;
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 1px;  
     }
 }

@@ -45,7 +45,7 @@ btn.onclick = () => {
         obj.date = datte.toLocaleDateString();
 
         for(let i = 0; i < data.length; i++){
-            if(data[i].engine === obj.engine && data[i].knot === obj.knot) {
+            if(data[i].engine === obj.engine && data[i].knot === obj.knot && data[i].date === obj.date) {
                 obj.count = Number(obj.count) + Number(data[i].count);
                 data.splice(i, 1);
                 id -= 1;
@@ -98,9 +98,13 @@ lookBtn.onclick = () => {
     const headerCount = document.createElement('th');
     headerCount.innerHTML = 'Кол-во';
 
+    const headerDate = document.createElement('th');
+    headerDate.innerHTML = 'Дата';
+
     row_1.appendChild(headerEngine);
     row_1.appendChild(headerKnot);
     row_1.appendChild(headerCount);
+    row_1.appendChild(headerDate);
 
     table.appendChild(row_1);
     
@@ -120,10 +124,14 @@ lookBtn.onclick = () => {
             const bodyCount = document.createElement('td');
             bodyCount.innerHTML = `${res[i].count}`;
 
+            const bodyDate = document.createElement('td');
+            bodyDate.innerHTML = `${res[i].date}`;
+
 
             row_2.appendChild(bodyEngine);
             row_2.appendChild(bodyKnot);
             row_2.appendChild(bodyCount);
+            row_2.appendChild(bodyDate);
 
 
             table.appendChild(row_2);
@@ -177,10 +185,13 @@ lookBtn.onclick = () => {
                 arrTd[e].innerText = input.value;
                 input.remove();
                 console.log(arrTd[e].innerText);
+
                 obj.engine = arrTd[0].innerText;
                 obj.knot = arrTd[1].innerText;
                 obj.count = arrTd[2].innerText;
+                obj.date = arrTd[3].innerText;
                 console.log(obj);
+
                 const resChange = JSON.parse(localStorage.getItem('data'));
                 console.log(resChange);
                 resChange.splice(i, 1, obj);
